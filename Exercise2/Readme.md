@@ -1,10 +1,10 @@
-# 🚀 Mars Rover Command System Simulator
+# Mars Rover Command System Simulator
 
 This project is a console-based simulation of a Mars Rover navigating a grid-based terrain. It was developed as a coding exercise to demonstrate proficiency in **Object-Oriented Programming (OOP)**, **SOLID principles**, and advanced **Software Design Patterns**.
 
 ---
 
-## 💡 Problem Statement
+## Problem Statement
 
 The objective is to design and implement a system that controls a Mars Rover on a $10 \times 10$ grid. The Rover must be able to:
 1. Initialize with a starting position $(x, y)$ and direction (N, S, E, W).
@@ -16,7 +16,7 @@ The key technical challenge is to achieve all movement and rotation logic using 
 
 ---
 
-## 📐 Architectural Design and Patterns
+## Architectural Design and Patterns
 
 The solution is structured to decouple various responsibilities, resulting in a highly flexible, testable, and maintainable codebase.
 
@@ -42,7 +42,7 @@ The solution is structured to decouple various responsibilities, resulting in a 
 
 ---
 
-## 🛠️ How to Run the Project
+## How to Run the Project
 
 This is a simple console application requiring a standard Java Development Kit (JDK) environment.
 
@@ -70,7 +70,7 @@ The simulator runs a **hardcoded test sequence** as per the problem requirements
 - **Obstacles**: `(2, 2)`, `(3, 5)`
 - **Command Sequence**: `MMRMMLMD`
 
-#### 📤 Expected Output
+#### Expected Output
 After executing the commands, the rover navigates the grid while checking for obstacles and boundaries.
 
 ![Rover Simulation Output](images/output.png)
