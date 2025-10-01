@@ -1,28 +1,31 @@
 package mars;
 
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.Set;
 
 public class Plateau {
 
     private final int length;
     private final int width;
+    private final Logger logger;
 
     private final Set<Position> obstacles;
 
     public Plateau(int length, int width, Set<Position> obstacles) {
         this.length = length;
         this.width = width;
-        this.obstacles = new HashSet<>();
+        this.logger = new Logger();
+        this.obstacles = Collections.unmodifiableSet(obstacles);
+        logger.info("Plateau initialized with size of " + length + "x" + width + " and obstacles at " + getObstacles());
     }
 
     public boolean isSafe(Position position) {
         if (!isWithinBounds(position)) {
-            System.err.println("WARNING: Rover is out of bound." );
+            logger.warn("Rover moved out of bounds at " + position);
             return false;
         }
         if (isObstacle(position)) {
-            System.err.println("WARNING: Obstacle detected at "+position);
+            logger.warn("Obstacle detected at " + position);
             return false;
         }
         return true;

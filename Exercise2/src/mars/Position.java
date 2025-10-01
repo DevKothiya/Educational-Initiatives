@@ -1,5 +1,7 @@
 package mars;
 
+import java.util.Objects;
+
 public class Position {
 
     private final int x;
@@ -20,9 +22,14 @@ public class Position {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || o.getClass()!=Position.class) return false;
+        if (o == null || o.getClass() != Position.class) return false;
         Position position = (Position) o;
         return x == position.getX() && y == position.getY();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     @Override

@@ -6,8 +6,13 @@ import mars.commands.MoveCommand;
 import mars.commands.RightCommand;
 
 public class CommandProcessor {
+    private final Logger logger;
 
-    public Command getCommand(char instruction){
+    public CommandProcessor() {
+        this.logger = new Logger();
+    }
+
+    public Command getCommand(char instruction) {
         return switch (instruction) {
             case 'M' -> new MoveCommand();
             case 'L' -> new LeftCommand();
@@ -17,15 +22,18 @@ public class CommandProcessor {
 
     }
 
-    public void processCommands(Rover rover, String commands){
-        System.out.println("Processing commands");
-        for(char instruction: commands.toCharArray()){
-            try{
-                Command command=getCommand(instruction);
+    public void processCommands(Rover rover, String commands) {
+        logger.info("Processing commands");
+        for (char instruction : commands.toCharArray()) {
+            try {
+                Command command = getCommand(instruction);
                 command.execute(rover);
-            }catch (IllegalArgumentException exception){
-                System.err.println("Error processing command:"+instruction+" : "+ exception.getMessage());
+            } catch (IllegalArgumentException exception) {
+                logger.error("Error processing command " + instruction, exception);
+            } catch (Exception exception) {
+                logger.error("An error occured during command execution", exception);
             }
+
         }
     }
 }
